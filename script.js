@@ -38,15 +38,17 @@ searchBtn.click(function(){
     fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + cityinput + '&appid=' + APIkey + "&units=metric")
     .then(response => response.json())
     .then(data => {
-        var forcastdate = data[0,8,16,24,32];
+        console.log(data);
+        var forcastdate = [data.list[0], data.list[8], data.list[16], data.list[24], data.list[32]];
     
         forcastdate.forEach(function(i) {
-            var indicatedate = data[i].dt_txt;
-            var forcasticon = data[i].weather[0].icon;
+            console.log (i);
+            var indicatedate = data.list[i].dt_txt;
+            var forcasticon = data.list[i].weather[0].icon;
             var forcasticonlink = "http://openweathermap.org/img/w/" + forcasticon + ".png";
-            var forcasttemp = data[i].main.temp;
-            var forcasthumidity = data[i].main.humidity;
-            var forcastwind = data[i].wind.speed;
+            var forcasttemp = data.list[i].main.temp;
+            var forcasthumidity = data.list[i].main.humidity;
+            var forcastwind = data.list[i].wind.speed;
 
             $(".5daydata").append(
                 "<div class = 5dayweather>" + 
@@ -57,7 +59,7 @@ searchBtn.click(function(){
                 "Wind : " + forcastwind + " M/Sec" + 
                 "</p>")
         })
-
+        
     });
 
 })
