@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!--link to Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <!--link to Bootstrap icon-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+        <!--link to google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+
+        <!--link to own css-->
+        <link rel="stylesheet" href="style.css" />
+        <title>Weather Dashboard</title>
+    </head>
+
+    <body>
+        <!--Header-->
+        <header class="jumbotron">
+            <h1 class="display-4 text-center">Weather Dashboard</h1>
+        </header>
+        
+        <div class="row">
+            <!--Search column & search history-->
+        <div class="left col-md-5">
+            <!--Search box-->
+            <div class="card text-center content searchbox">
+                <div class="card-body">
+                  <h3 class="card-title">Search for a City:</h3>
+                  <input type="text" class="form-control form-control-lg cityinput" placeholder="Enter a city...">
+                  <button type="button" class="btn btn-primary btn-lg btn-block searchBtn">Search <i class="bi bi-search"></i></button>
+                </div>
+            </div>
+
+            <!--History list-->
+            <div class="card text-center historybox">
+                <ul class="list-group"><i class="bi bi-clock-history"></i>Previous Search</ul>
+            </div>
+            
+        </div>
+
+        <div class="col">
+            <!-- for today's forcast-->
+            <div class="row content">
+                <div class="card text-center">
+                    <div class="card-body">
+                      <h3 class="card-title">Current Weather</h3>
+                      <p class="Currentcityname"></p>
+                      <p class="CurrenttempinF"></p>
+                      <p class="Currenthumidity"></p>
+                      <p class="CurrentFLtemp"></p>
+                      <p class="Currenticon"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for Next 5 day forcast-->
+            <div class="row content">
+                <div class="card text-center">
+                    <div class="card-body">
+                      <h3 class="card-title">Next 5 Days Forcast</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        
+        <!--link to jQuery / Moment.js & own JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

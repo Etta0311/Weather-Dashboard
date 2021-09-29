@@ -1,0 +1,30 @@
+body{
+    background-color: #EBF5FB ;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+.jumbotron {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 15%, rgba(0,91,255,0.5191264005602241) 100%);
+    text-align: center;
+    height: 90px;
+    color: white;
+    padding: 17px;
+}
+
+.card {
+    margin: 15px 0px;
+    border-top: 4px solid #2E86C1;
+    font-size: 22px;
+}
+
+.searchBtn{
+    margin: 20px;
+}
+
+.historybox {
+    padding: 7px;
+}
+
+.content {
+    min-height: 200px;
+}
