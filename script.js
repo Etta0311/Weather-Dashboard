@@ -9,11 +9,19 @@ var Currenthumidity = $(".Currenthumidity");
 var CurrentFLtemp = $(".CurrentFLtemp");
 var Currenticon = $(".Currenticon");
 
+searchBtn.on("click", search);
 
-searchBtn.click(function(){
+function search() {
     // get value of cityname input by user
     var cityinput = $(".cityinput").val();
     console.log(cityinput);
+
+    // for (var i = 0; i < localStorage.length; i++) {
+    //     var historycity = localStorage.getItem(i);
+    //     var savedcity = $(".list-group").addClass("list-group-item");
+    
+    //     savedcity.append("<button>" + historycity + "</button>");
+    // }
 
     //Get current weather data from API
     fetch('http://api.openweathermap.org/data/2.5/weather?q=' + cityinput + '&appid=' + APIkey + "&units=metric")
@@ -32,14 +40,13 @@ searchBtn.click(function(){
         Currenthumidity.text("Humidity : " + humidity + " %");
         CurrentFLtemp.text("Feels like : " + FLtemp + "°C");
         Currenticon.attr('src', iconlink);
-    });
 
-    // Get 5 day forcast weather data from API
     fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + cityinput + '&appid=' + APIkey + "&units=metric")
-    .then(response => response.json())
-    .then(data => {
-        var forcastdate = [data.list[0], data.list[8], data.list[16], data.list[24], data.list[32]];
-    
+    .then(secresponse => secresponse.json())
+    .then(secdata => {
+        var forcastdate = [secdata.list[0], secdata.list[8], secdata.list[16], secdata.list[24], secdata.list[32]];
+        $(".5daydata").empty()
+
         forcastdate.forEach(function(i) {
             var indicatedate = i.dt_txt;
             var forcasticon = i.weather[0].icon;
@@ -49,7 +56,7 @@ searchBtn.click(function(){
             var forcastwind = i.wind.speed;
 
             $(".5daydata").append(
-                "<div class = 5dayweather>" + 
+                "<div class = col 5dayweather>" + 
                 "<p>" + indicatedate + "<br>" +
                 "<img src=" + forcasticonlink + ">"+ "<br>" +
                 "Temp : " + forcasttemp + "°C" + "<br>" +
@@ -59,5 +66,5 @@ searchBtn.click(function(){
         })
 
     });
-})
-
+    });
+}
