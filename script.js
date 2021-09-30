@@ -11,7 +11,6 @@ var Currenticon = $(".Currenticon");
 var searchHistory = [];
 
 searchBtn.on("click", search);
-historyBtn.on("click", search);
 
 function search() {
     // get value of cityname input by user
@@ -26,13 +25,15 @@ function search() {
     localStorage.setItem('history', JSON.stringify(searchHistory));
 
     var cityHistory = JSON.parse(localStorage.getItem('history'));
+    document.body.querySelector("ul").innerHTML = "";
 
     for (x = 0; x < cityHistory.length; x++) {
         var historyBtn = document.createElement("button");
+        historyBtn.classList.add("row");
         historyBtn.classList.add("btn-secondary");
         historyBtn.textContent = cityHistory[x];
         document.body.querySelector("ul").appendChild(historyBtn)
-
+        historyBtn.addEventListener("click", search());
     }
 
     //Get current weather data from API
@@ -81,5 +82,4 @@ function search() {
     });
     });
 
-    
 }
