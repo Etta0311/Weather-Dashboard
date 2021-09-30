@@ -8,6 +8,7 @@ var CurrenttempinC = $(".CurrenttempinC");
 var Currenthumidity = $(".Currenthumidity");
 var CurrentFLtemp = $(".CurrentFLtemp");
 var Currenticon = $(".Currenticon");
+var searchHistory = [];
 
 searchBtn.on("click", search);
 
@@ -17,10 +18,19 @@ function search() {
     console.log(cityinput);
 
     // save search history to localstorage and display in previous search part
-    var searchHistory = [];
+    if (searchHistory.indexOf(cityinput) !== -1) {
+        return;
+      }
     searchHistory.push(cityinput);
     localStorage.setItem('history', JSON.stringify(searchHistory));
-    // var cityHistory = localStorage.getItem('history');
+
+    var cityHistory = localStorage.getItem('history');
+
+    for (x = 0; x < cityHistory.length; x++) {
+        var historyBtn = document.createElement("button");
+        historyBtn.classList.add("btn-secondary");
+        historyBtn.innerHTML += cityHistory[x];
+    }
 
 
     //Get current weather data from API
