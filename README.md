@@ -25,7 +25,7 @@ website not only showing data when it received a user input but also called up t
 
 
 ## Usage
-![Demo](./RMimages/demo.gif)
+![Demo](./RMimages/WeatherDashboard.gif)
 
 ## Contributors
 

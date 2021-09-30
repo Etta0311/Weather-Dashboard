@@ -13,7 +13,9 @@ var historyBtn = $(".historybox");
 var cityHistory;
 
 searchBtn.on("click", search);
-historyBtn.on("click", search);
+historyBtn.on('click', function(event) { 
+    buttonSearch(event)
+});
 
 function search() {
 
@@ -85,8 +87,9 @@ function search() {
    });
 }
 
-function buttonSearch(cityHistory) {
-    cityHistory = $(".historyBtn").text();
+function buttonSearch(event) {
+    console.log(event.target.innerHTML)
+    cityHistory = event.target.innerHTML;
     console.log(cityHistory);
 
    fetch('http://api.openweathermap.org/data/2.5/weather?q=' + cityHistory + '&appid=' + APIkey + "&units=metric")
@@ -128,6 +131,4 @@ function buttonSearch(cityHistory) {
        })
    });
    })
-}
-
-historyBtn.on('click', buttonSearch);
+};
