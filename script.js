@@ -11,6 +11,7 @@ var Currenticon = $(".Currenticon");
 var searchHistory = [];
 
 searchBtn.on("click", search);
+historyBtn.on("click", search);
 
 function search() {
     // get value of cityname input by user
@@ -24,14 +25,15 @@ function search() {
     searchHistory.push(cityinput);
     localStorage.setItem('history', JSON.stringify(searchHistory));
 
-    var cityHistory = localStorage.getItem('history');
+    var cityHistory = JSON.parse(localStorage.getItem('history'));
 
     for (x = 0; x < cityHistory.length; x++) {
         var historyBtn = document.createElement("button");
         historyBtn.classList.add("btn-secondary");
-        historyBtn.innerHTML += cityHistory[x];
-    }
+        historyBtn.textContent = cityHistory[x];
+        document.body.querySelector("ul").appendChild(historyBtn)
 
+    }
 
     //Get current weather data from API
     fetch('http://api.openweathermap.org/data/2.5/weather?q=' + cityinput + '&appid=' + APIkey + "&units=metric")
@@ -78,4 +80,6 @@ function search() {
 
     });
     });
+
+    
 }
