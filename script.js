@@ -16,12 +16,12 @@ function search() {
     var cityinput = $(".cityinput").val();
     console.log(cityinput);
 
-    // for (var i = 0; i < localStorage.length; i++) {
-    //     var historycity = localStorage.getItem(i);
-    //     var savedcity = $(".list-group").addClass("list-group-item");
-    
-    //     savedcity.append("<button>" + historycity + "</button>");
-    // }
+    // save search history to localstorage and display in previous search part
+    var searchHistory = [];
+    searchHistory.push(cityinput);
+    localStorage.setItem('history', JSON.stringify(searchHistory));
+    // var cityHistory = localStorage.getItem('history');
+
 
     //Get current weather data from API
     fetch('http://api.openweathermap.org/data/2.5/weather?q=' + cityinput + '&appid=' + APIkey + "&units=metric")
@@ -64,6 +64,7 @@ function search() {
                 "Wind : " + forcastwind + " M/Sec" + 
                 "</p>")
         })
+
 
     });
     });
