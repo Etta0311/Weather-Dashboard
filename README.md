@@ -1,5 +1,5 @@
 # wk6-Weather-Dashboard
-Link: [weather Dashboard](https://etta0311.github.io/wk6-Weather-Dashboard/)
+Link: [weather Dashboard](https://etta0311.github.io/Weather-Dashboard/)
 
 ## Description
 
