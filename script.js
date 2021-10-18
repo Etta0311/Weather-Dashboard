@@ -44,7 +44,7 @@ function search() {
    }
 
    //Get current weather data from API
-   fetch('http://api.openweathermap.org/data/2.5/weather?q=' + cityinput + '&appid=' + APIkey + "&units=metric")
+   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityinput + '&appid=' + APIkey + "&units=metric")
    .then(response => response.json())
    .then(data => {
        var cityname = data.name;
@@ -60,7 +60,7 @@ function search() {
        CurrentFLtemp.text("Feels like : " + FLtemp + "°C");
        Currenticon.attr('src', iconlink);
 
-   fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + cityinput + '&appid=' + APIkey + "&units=metric")
+   fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + cityinput + '&appid=' + APIkey + "&units=metric")
    .then(secresponse => secresponse.json())
    .then(secdata => {
        var forcastdate = [secdata.list[0], secdata.list[8], secdata.list[16], secdata.list[24], secdata.list[32]];
@@ -69,7 +69,7 @@ function search() {
        forcastdate.forEach(function(i) {
            var indicatedate = i.dt_txt;
            var forcasticon = i.weather[0].icon;
-           var forcasticonlink = "http://openweathermap.org/img/wn/" + forcasticon + "@2x.png";
+           var forcasticonlink = "https://openweathermap.org/img/wn/" + forcasticon + "@2x.png";
            var forcasttemp = i.main.temp;
            var forcasthumidity = i.main.humidity;
            var forcastwind = i.wind.speed;
@@ -92,7 +92,7 @@ function buttonSearch(event) {
     cityHistory = event.target.innerHTML;
     console.log(cityHistory);
 
-   fetch('http://api.openweathermap.org/data/2.5/weather?q=' + cityHistory + '&appid=' + APIkey + "&units=metric")
+   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityHistory + '&appid=' + APIkey + "&units=metric")
    .then(response => response.json())
    .then(data => {
        var cityname = data.name;
@@ -101,14 +101,14 @@ function buttonSearch(event) {
        var humidity = data.main.humidity;
        var FLtemp = data.main.feels_like;
        var icon = data.weather[0].icon;
-       var iconlink = "http://openweathermap.org/img/w/" + icon + ".png";
+       var iconlink = "https://openweathermap.org/img/w/" + icon + ".png";
        Currentcityname.text(cityname + " , " + countryname);
        CurrenttempinC.text("Current temperature : " + tempinC + "°C");
        Currenthumidity.text("Humidity : " + humidity + " %");
        CurrentFLtemp.text("Feels like : " + FLtemp + "°C");
        Currenticon.attr('src', iconlink);
 
-   fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + cityHistory + '&appid=' + APIkey + "&units=metric")
+   fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + cityHistory + '&appid=' + APIkey + "&units=metric")
    .then(secresponse => secresponse.json())
    .then(secdata => {
        var forcastdate = [secdata.list[0], secdata.list[8], secdata.list[16], secdata.list[24], secdata.list[32]];
@@ -116,7 +116,7 @@ function buttonSearch(event) {
        forcastdate.forEach(function(i) {
            var indicatedate = i.dt_txt;
            var forcasticon = i.weather[0].icon;
-           var forcasticonlink = "http://openweathermap.org/img/wn/" + forcasticon + "@2x.png";
+           var forcasticonlink = "https://openweathermap.org/img/wn/" + forcasticon + "@2x.png";
            var forcasttemp = i.main.temp;
            var forcasthumidity = i.main.humidity;
            var forcastwind = i.wind.speed;
